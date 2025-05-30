@@ -3,7 +3,7 @@ from datetime import datetime
 import os
 
 # Set your OpenAI API key
-openai.api_key = s2_cd1ee981d2f5485680f28422fb7e194f
+openai.api_key = os.getenv('OPENAI_API_KEY')  # Uses the GitHub secret
 
 # Your Google Ads code
 GOOGLE_ADS = '''
@@ -79,7 +79,8 @@ def main():
     topic = "The Future of Bitcoin in 2025"
     title = topic
     content = generate_blog(topic)
-    html = make_html(title, f"<p>{content.replace('\\n', '</p><p>')}</p>")
+    content_html = "<p>" + content.replace('\n', '</p><p>') + "</p>"
+    html = make_html(title, content_html)
     filename = f"blog/ai-post-single.html"
     with open(filename, "w", encoding="utf-8") as f:
         f.write(html)
