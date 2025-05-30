@@ -2,8 +2,8 @@ import openai
 from datetime import datetime
 import os
 
-# Set your OpenAI API key
-openai.api_key = os.getenv('OPENAI_API_KEY')  # Uses the GitHub secret
+# Set your OpenAI API key from GitHub secret
+api_key = os.getenv('OPENAI_API_KEY')
 
 # Your Google Ads code
 GOOGLE_ADS = '''
@@ -63,15 +63,16 @@ def make_html(title, content):
 </html>
 """
 
-# Function to generate a blog post using OpenAI
+# Function to generate a blog post using OpenAI (new API)
 def generate_blog(topic):
     prompt = f"Write a detailed, original crypto blog post about: {topic}. Make it engaging, helpful, and beginner-friendly."
-    response = openai.ChatCompletion.create(
+    client = openai.OpenAI(api_key=api_key)
+    response = client.chat.completions.create(
         model="gpt-4",
         messages=[{"role": "user", "content": prompt}],
         max_tokens=900
     )
-    return response.choices[0].message['content']
+    return response.choices[0].message.content
 
 # Main automation
 def main():
