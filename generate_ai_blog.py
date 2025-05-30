@@ -1,8 +1,7 @@
 import openai
-from datetime import datetime
 import os
 
-# Set your OpenAI API key from GitHub secret
+# Get your OpenAI API key from the environment (GitHub secret)
 api_key = os.getenv('OPENAI_API_KEY')
 
 # Your Google Ads code
@@ -68,7 +67,7 @@ def generate_blog(topic):
     prompt = f"Write a detailed, original crypto blog post about: {topic}. Make it engaging, helpful, and beginner-friendly."
     client = openai.OpenAI(api_key=api_key)
     response = client.chat.completions.create(
-        model="gpt-4",
+        model="gpt-3.5-turbo",
         messages=[{"role": "user", "content": prompt}],
         max_tokens=900
     )
