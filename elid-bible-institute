@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Elid Bible Institute</title>
+  <link href="styles.css" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Elid Bible Institute logo">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#curriculum">Curriculum</a></li>
+        <li><a href="#admissions">Admissions</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home" class="hero">
+    <h1>Elid Bible Institute</h1>
+    <p>Equipping hearts. Empowering ministers.</p>
+    <a href="#admissions" class="btn-primary">Apply Now</a>
+  </section>
+
+  <section id="about" class="info-section">
+    <h2>About Us</h2>
+    <p>Elid Bible Institute is a Spirit‑filled, vocational training center focused on raising faithful pastors and church planters through a 3‑year academic track and a 4th‑year internship.</p>
+    <p>Our vision: To raise up Spirit‑filled leaders, faithful preachers, and passionate church planters who will bring the gospel to every corner of the Philippines and beyond.</p>
+  </section>
+
+  <section id="curriculum" class="info-section">
+    <h2>Curriculum</h2>
+    <h3>3-Year Academic Program</h3>
+    <ul>
+      <li>Year 1: Foundations in Bible & Doctrine</li>
+      <li>Year 2: Homiletics, Evangelism & Church Planting 1–2</li>
+      <li>Year 3: Church Planting 3, Expository Preaching & Electives</li>
+    </ul>
+    <h3>4th Year Internship</h3>
+    <ul>
+      <li>15 units Supervised Ministry</li>
+      <li>Ministry Reflection Journal & Suggestion Paper</li>
+      <li>Panel Evaluation & Graduation Chapel</li>
+    </ul>
+  </section>
+
+  <section id="admissions" class="info-section">
+    <h2>Admissions</h2>
+    <p>Requirements:</p>
+    <ul>
+      <li>Born-again believer</li>
+      <li>Pastor’s recommendation</li>
+      <li>High school diploma or equivalent</li>
+    </ul>
+    <a href="application_form.pdf" class="btn-secondary">Download Application Form</a>
+  </section>
+
+  <section id="contact" class="info-section">
+    <h2>Contact Us</h2>
+    <p>Email: info@elidbibleinstitute.ph</p>
+    <p>Facebook: <a href="#">facebook.com/ElidBibleInstitute</a></p>
+  </section>
+
+  <footer>
+    &copy; 2025 Elid Bible Institute. All Rights Reserved.
+  </footer>
+</body>
+</html>
