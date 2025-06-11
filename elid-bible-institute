@@ -101,6 +101,23 @@
       color: var(--gold);
       text-decoration: none;
     }
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: var(--green);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+      z-index: 1000;
+    }
+    .back-button:hover {
+      background: var(--gold);
+      color: var(--green);
+    }
     @media (max-width: 700px) {
       main {
         padding: 1rem 0.5rem;
@@ -112,10 +129,20 @@
       h2 {
         font-size: 1.3rem;
       }
+      .back-button {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin: 1rem auto;
+        display: block;
+        width: fit-content;
+      }
     }
   </style>
 </head>
 <body>
+  <a href="javascript:history.back()" class="back-button">← Back to Main Site</a>
+  
   <header>
     <h1>🌿 Elid Bible Institute</h1>
     <p>Muntinlupa City, Metro Manila, Philippines</p>
@@ -171,7 +198,7 @@
     </section>
     <section id="faculty">
       <h2>🧑‍🏫 Faculty</h2>
-      <p>Our instructors are seasoned CAMACOP pastors and educators with <strong>Master’s and Doctorate degrees</strong>, trained in both academic excellence and practical ministry.</p>
+      <p>Our instructors are seasoned CAMACOP pastors and educators with <strong>Master's and Doctorate degrees</strong>, trained in both academic excellence and practical ministry.</p>
     </section>
     <section id="features">
       <h2>📌 Unique Features</h2>
@@ -215,5 +242,17 @@
   <footer style="text-align:center; padding:1.2rem 0; background:var(--green); color:#fff; margin-top:2rem;">
     &copy; 2025 Elid Bible Institute. All rights reserved.
   </footer>
+
+  <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
 </body>
 </html>
