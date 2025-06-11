@@ -143,6 +143,7 @@
             border-radius: 12px;
             border: 1px solid #333;
             transition: transform 0.3s, border-color 0.3s;
+            cursor: pointer;
         }
 
         .feature-card:hover {
@@ -150,10 +151,28 @@
             border-color: #f0b90b;
         }
 
+        .feature-card.clickable {
+            cursor: pointer;
+        }
+
+        .feature-card.bible-school {
+            background: linear-gradient(135deg, rgba(46, 125, 50, 0.1) 0%, rgba(255, 215, 0, 0.1) 100%);
+            border: 1px solid #2e7d32;
+        }
+
+        .feature-card.bible-school:hover {
+            border-color: #ffd700;
+            background: linear-gradient(135deg, rgba(46, 125, 50, 0.2) 0%, rgba(255, 215, 0, 0.2) 100%);
+        }
+
         .feature-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
             color: #f0b90b;
+        }
+
+        .feature-icon.bible {
+            color: #2e7d32;
         }
 
         .feature-card h3 {
@@ -315,6 +334,11 @@
                     <h3>Proven Strategies</h3>
                     <p>Implement battle-tested trading strategies that have generated consistent returns.</p>
                 </div>
+                <div class="feature-card bible-school clickable" onclick="window.open('elid-bible-institute.html', '_blank')">
+                    <div class="feature-icon bible">🌿</div>
+                    <h3>Elid Bible Institute</h3>
+                    <p>Train passionate, Spirit-filled men and women to plant churches and serve with sound doctrine. Church Planting • Urban Ministry • Practical Theology</p>
+                </div>
                 <div class="feature-card">
                     <div class="feature-icon">🌟</div>
                     <h3>Community Support</h3>
@@ -340,7 +364,6 @@
                     <div class="blog-card-content">
                         <h3>Top 5 Crypto Exchanges 2025</h3>
                         <p>A comprehensive review of the best cryptocurrency exchanges for this year.</p>
-                        <a href="blog/top-5-crypto-exchanges-2025.html" class="blog-link">Read More →</a>
                     </div>
                 </div>
                 <div class="blog-card">
