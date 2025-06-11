@@ -1,74 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Elid Bible Institute</title>
-  <link href="styles.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #2e7d32;
+      --gold: #ffd700;
+      --light-bg: #f7faf7;
+      --dark: #222;
+    }
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: var(--light-bg);
+      color: var(--dark);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: linear-gradient(90deg, var(--green) 70%, var(--gold) 100%);
+      color: #fff;
+      padding: 2rem 0 1.5rem 0;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+    }
+    header p {
+      margin: 0.5rem 0 0 0;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+    nav {
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(44, 62, 80, 0.04);
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0.7rem 0;
+      font-weight: 600;
+    }
+    nav a {
+      color: var(--green);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: var(--gold);
+    }
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(44, 62, 80, 0.07);
+      padding: 2rem 2.5rem;
+    }
+    section {
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      color: var(--green);
+      margin-top: 0;
+      font-size: 2rem;
+      border-left: 6px solid var(--gold);
+      padding-left: 0.7rem;
+      margin-bottom: 1rem;
+    }
+    ul, ol {
+      margin: 0.5rem 0 0 1.2rem;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+    }
+    .highlight {
+      background: var(--gold);
+      color: var(--green);
+      padding: 0.2rem 0.7rem;
+      border-radius: 6px;
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+    .contact {
+      background: var(--green);
+      color: #fff;
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+    }
+    .contact a, .contact strong {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    @media (max-width: 700px) {
+      main {
+        padding: 1rem 0.5rem;
+      }
+      nav {
+        gap: 1rem;
+        font-size: 0.98rem;
+      }
+      h2 {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
-    <div class="logo">
-      <img src="logo.png" alt="Elid Bible Institute logo">
+    <h1>🌿 Elid Bible Institute</h1>
+    <p>Muntinlupa City, Metro Manila, Philippines</p>
+    <div style="margin-top:0.7rem;">
+      <span class="highlight">Church Planting • Urban Ministry • Practical Theology</span>
     </div>
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#curriculum">Curriculum</a></li>
-        <li><a href="#admissions">Admissions</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
   </header>
-
-  <section id="home" class="hero">
-    <h1>Elid Bible Institute</h1>
-    <p>Equipping hearts. Empowering ministers.</p>
-    <a href="#admissions" class="btn-primary">Apply Now</a>
-  </section>
-
-  <section id="about" class="info-section">
-    <h2>About Us</h2>
-    <p>Elid Bible Institute is a Spirit‑filled, vocational training center focused on raising faithful pastors and church planters through a 3‑year academic track and a 4th‑year internship.</p>
-    <p>Our vision: To raise up Spirit‑filled leaders, faithful preachers, and passionate church planters who will bring the gospel to every corner of the Philippines and beyond.</p>
-  </section>
-
-  <section id="curriculum" class="info-section">
-    <h2>Curriculum</h2>
-    <h3>3-Year Academic Program</h3>
-    <ul>
-      <li>Year 1: Foundations in Bible & Doctrine</li>
-      <li>Year 2: Homiletics, Evangelism & Church Planting 1–2</li>
-      <li>Year 3: Church Planting 3, Expository Preaching & Electives</li>
-    </ul>
-    <h3>4th Year Internship</h3>
-    <ul>
-      <li>15 units Supervised Ministry</li>
-      <li>Ministry Reflection Journal & Suggestion Paper</li>
-      <li>Panel Evaluation & Graduation Chapel</li>
-    </ul>
-  </section>
-
-  <section id="admissions" class="info-section">
-    <h2>Admissions</h2>
-    <p>Requirements:</p>
-    <ul>
-      <li>Born-again believer</li>
-      <li>Pastor’s recommendation</li>
-      <li>High school diploma or equivalent</li>
-    </ul>
-    <a href="application_form.pdf" class="btn-secondary">Download Application Form</a>
-  </section>
-
-  <section id="contact" class="info-section">
-    <h2>Contact Us</h2>
-    <p>Email: info@elidbibleinstitute.ph</p>
-    <p>Facebook: <a href="#">facebook.com/ElidBibleInstitute</a></p>
-  </section>
-
-  <footer>
-    &copy; 2025 Elid Bible Institute. All Rights Reserved.
+  <nav>
+    <a href="#vision">Vision</a>
+    <a href="#mission">Mission</a>
+    <a href="#programs">Programs</a>
+    <a href="#faculty">Faculty</a>
+    <a href="#features">Features</a>
+    <a href="#tuition">Tuition</a>
+    <a href="#admission">Admission</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <main>
+    <section id="vision">
+      <h2>🎓 Vision</h2>
+      <p>To train passionate, Spirit-filled men and women to plant churches, disciple communities, and serve the body of Christ with sound doctrine and practical skills.</p>
+    </section>
+    <section id="mission">
+      <h2>🧭 Mission</h2>
+      <ul>
+        <li>Equip students with strong biblical and theological foundations</li>
+        <li>Prepare church planters to engage in real urban ministry</li>
+        <li>Offer practical and livelihood electives to support full-time ministry</li>
+        <li>Disciple servant leaders for long-term local and global mission</li>
+      </ul>
+    </section>
+    <section id="programs">
+      <h2>🏫 Program Highlights</h2>
+      <ul>
+        <li>Trimester System (3 terms per year)</li>
+        <li>3-Year Classroom Learning + 4th Year Internship</li>
+        <li>10 Units per Trimester only (manageable load)</li>
+        <li>4 Levels of Church Planting Courses</li>
+        <li>Focus on Urban Evangelism & Ministry</li>
+        <li>Livelihood-Based Electives for Tentmaking Pastors</li>
+      </ul>
+      <h2>📚 Academic Programs Offered</h2>
+      <ol>
+        <li><strong>Certificate in Church Planting</strong> – 12 Units</li>
+        <li><strong>Diploma in Theology</strong> – 2 Years</li>
+        <li><strong>Bachelor of Theology (Ecclesiastical)</strong> – 4 Years
+          <ul>
+            <li>Pastoral Studies Track</li>
+            <li>Christian Education for Ladies</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+    <section id="faculty">
+      <h2>🧑‍🏫 Faculty</h2>
+      <p>Our instructors are seasoned CAMACOP pastors and educators with <strong>Master’s and Doctorate degrees</strong>, trained in both academic excellence and practical ministry.</p>
+    </section>
+    <section id="features">
+      <h2>📌 Unique Features</h2>
+      <ul>
+        <li>📖 <strong>Church Planting 1–4</strong> is mandatory before graduation</li>
+        <li>🛠️ Electives designed to help pastors earn while ministering</li>
+        <li>🌆 Special focus on urban ministry settings</li>
+        <li>✝️ CAMACOP Statement of Faith</li>
+        <li>🧾 <strong>No thesis required</strong> — Instead, students submit a <strong>1-year ministry reflection</strong> and a <strong>practical church planting proposal</strong> based on real experience</li>
+      </ul>
+    </section>
+    <section id="tuition">
+      <h2>💰 Tuition and Fees</h2>
+      <ul>
+        <li>Tuition Fee: <strong>₱500 per unit</strong></li>
+        <li>Full load per trimester: <strong>₱5,000 only</strong></li>
+        <li>🔔 <strong>Full Scholarship</strong> for the <strong>first 10 students</strong> — <em>from enrollment to graduation!</em></li>
+      </ul>
+      <h2>🖥️ Learning Mode</h2>
+      <ul>
+        <li>👨‍🏫 Face-to-Face (Metro Manila)</li>
+        <li>💻 Online via Zoom (Flexible Setup)</li>
+      </ul>
+    </section>
+    <section id="admission">
+      <h2>📝 Admission Requirements</h2>
+      <ul>
+        <li>At least High School Graduate (Grade 12)</li>
+        <li>Pastoral Recommendation</li>
+        <li>Simple Interview / Orientation</li>
+      </ul>
+    </section>
+    <section id="contact">
+      <h2>📩 Inquiries & Enrollment</h2>
+      <div class="contact">
+        <div><strong>Email:</strong> <a href="mailto:rhodnnieaustria@gmail.com">rhodnnieaustria@gmail.com</a></div>
+        <div><strong>Mobile:</strong> 0923-085-9439</div>
+      </div>
+    </section>
+  </main>
+  <footer style="text-align:center; padding:1.2rem 0; background:var(--green); color:#fff; margin-top:2rem;">
+    &copy; 2025 Elid Bible Institute. All rights reserved.
   </footer>
 </body>
 </html>
