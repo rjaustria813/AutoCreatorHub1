@@ -13,6 +13,9 @@
       --gold: #ffd700;
       --light-bg: #f7faf7;
       --dark: #222;
+      --trimester1: #e8f5e9;
+      --trimester2: #fffde7;
+      --trimester3: #f3e5f5;
     }
     body {
       font-family: 'Montserrat', Arial, sans-serif;
@@ -46,6 +49,7 @@
       gap: 2rem;
       padding: 0.7rem 0;
       font-weight: 600;
+      flex-wrap: wrap;
     }
     nav a {
       color: var(--green);
@@ -174,6 +178,44 @@
       background: var(--green);
       color: #fff;
     }
+    /* Trimester Schedule Table Styles */
+    .trimester-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+    .trimester-table th, .trimester-table td {
+      border: 1px solid #bbb;
+      padding: 0.5rem 0.7rem;
+      text-align: left;
+    }
+    .trimester-table th {
+      background: var(--green);
+      color: #fff;
+      font-weight: 700;
+    }
+    .trimester-table tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+    .trimester1 { background: var(--trimester1); }
+    .trimester2 { background: var(--trimester2); }
+    .trimester3 { background: var(--trimester3); }
+    .schedule-label {
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-top: 1.2rem;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+    .schedule-notes {
+      background: #f5f5f5;
+      border-left: 4px solid var(--gold);
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.5rem;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
     @media (max-width: 700px) {
       main {
         padding: 1rem 0.5rem;
@@ -193,6 +235,10 @@
         display: block;
         width: fit-content;
       }
+      .trimester-table th, .trimester-table td {
+        font-size: 0.95rem;
+        padding: 0.4rem 0.3rem;
+      }
     }
   </style>
 </head>
@@ -210,6 +256,7 @@
     <a href="#vision">Vision</a>
     <a href="#mission">Mission</a>
     <a href="#programs">Programs</a>
+    <a href="#schedule">Schedule</a>
     <a href="#faculty">Faculty</a>
     <a href="#about">About Us</a>
     <a href="#features">Features</a>
@@ -253,7 +300,6 @@
           </ul>
         </li>
       </ol>
-
       <h3>Bachelor of Theology (Ecclesiastical)</h3>
       <p><strong>Duration:</strong> 4 Years (Trimester System)<br>
       <strong>Format:</strong> 3 Academic Years + 1 Internship Year<br>
@@ -264,109 +310,75 @@
       <strong>Focus:</strong> Church Planting, Urban Ministry, Tentmaking<br>
       <strong>Weekly Chapel:</strong> Non-credit<br>
       <strong>Tracks:</strong> Pastoral Studies / Christian Education for Ladies</p>
-
-      <h3>📘 Year 1: Foundations & Theology</h3>
-      <h4>Trimester 1</h4>
-      <ul>
-        <li><strong>Theology 1:</strong> Theology Proper, Christology, Pneumatology – 3</li>
-        <li>Old Testament Survey – 3</li>
-        <li>English for Ministry 1 – 3</li>
-        <li>Weekend Ministry – 1</li>
-      </ul>
-      <h4>Trimester 2</h4>
-      <ul>
-        <li><strong>Theology 2:</strong> Anthropology, Hamartiology, Soteriology – 3</li>
-        <li>New Testament Survey – 3</li>
-        <li>Church History – 3</li>
-        <li>Weekend Ministry – 1</li>
-      </ul>
-      <h4>Trimester 3</h4>
-      <ul>
-        <li><strong>Theology 3:</strong> Ecclesiology, Angelology, Eschatology – 3</li>
-        <li>Hermeneutics – 3</li>
-        <li>English for Ministry 2 – 3</li>
-        <li>Weekend Ministry – 1</li>
-      </ul>
-
-      <h3>📘 Year 2: Ministry & Church Planting</h3>
-      <h4>Trimester 1</h4>
-      <ul>
-        <li>Life of Christ – 3</li>
-        <li>Homiletics (Preaching) – 3</li>
-        <li>Introduction to Counseling – 3</li>
-        <li>Weekend Ministry – 1</li>
-      </ul>
-      <h4>Trimester 2</h4>
-      <ul>
-        <li>Acts & Pauline Epistles – 3</li>
-        <li>Church Planting 1: Vision & Calling – 3</li>
-        <li>Systematic Theology Review (Summary) – 3</li>
-        <li>Weekend Ministry – 1</li>
-      </ul>
-      <h4>Trimester 3</h4>
-      <ul>
-        <li>Pastoral Theology – 3</li>
-        <li>Christian Education – 3</li>
-        <li>Tentmaking Elective 1 – 3</li>
-        <li>Weekend Ministry – 1</li>
-      </ul>
-
-      <h3>📘 Year 3: Church Planting & Language</h3>
-      <h4>Trimester 1</h4>
-      <ul>
-        <li>Church Planting 2: Community Assessment – 3</li>
-        <li>Teaching Methods – 3</li>
-        <li>Greek 1 – 3</li>
-        <li>Weekend Ministry – 1</li>
-      </ul>
-      <h4>Trimester 2</h4>
-      <ul>
-        <li>Church Planting 3: Launching a Church – 3</li>
-        <li>Missions & Evangelism – 3</li>
-        <li>Greek 2 – 3</li>
-        <li>Weekend Ministry – 1</li>
-      </ul>
-      <h4>Trimester 3</h4>
-      <ul>
-        <li>Church Planting 4: Multiplication & Discipleship – 3</li>
-        <li>Urban Ministry Strategies – 3</li>
-        <li>Tentmaking Elective 2 – 3</li>
-        <li>Weekend Ministry – 1</li>
-      </ul>
-
-      <h3>📘 Year 4: Internship Year</h3>
-      <h4>Trimester 1</h4>
-      <ul>
-        <li>Field Internship (Supervised) – 3</li>
-        <li>Ministry Reflection Journal – 3</li>
-        <li>Small Group Leadership – 3</li>
-        <li>Weekend Ministry – 1</li>
-      </ul>
-      <h4>Trimester 2</h4>
-      <ul>
-        <li>Continued Internship – 3</li>
-        <li>Counseling Practicum – 3</li>
-        <li>Leadership & Conflict Management – 3</li>
-        <li>Weekend Ministry – 1</li>
-      </ul>
-      <h4>Trimester 3</h4>
-      <ul>
-        <li>Church Planting Proposal (Based on Experience) – 3</li>
-        <li>Final Ministry Presentation – 3</li>
-        <li>Pastoral Ethics & Contemporary Issues – 3</li>
-        <li>Weekend Ministry – 1</li>
-      </ul>
-
-      <h3>🎯 Elective Options (Choose 2 Minimum = 6 Units)</h3>
-      <ul>
-        <li>Tentmaking 1: Business & Livelihood for Pastors</li>
-        <li>Tentmaking 2: Digital Ministry Income</li>
-        <li>Worship & Music Leadership</li>
-        <li>Youth & Family Counseling</li>
-        <li>Media Evangelism (YouTube, TikTok, Radio)</li>
-        <li>Church Administration & Digital Tools</li>
-      </ul>
     </section>
+
+    <!-- Trimester Schedule Section -->
+    <section id="schedule">
+      <h2>📅 Trimester Academic Schedule</h2>
+      <div class="schedule-notes">
+        <strong>Each trimester runs for 13 weeks:</strong><br>
+        • 12 weeks of classes<br>
+        • 1 week for <strong>Final Exams</strong><br>
+        • 2–3 week break between trimesters
+      </div>
+
+      <span class="schedule-label" style="color:#2e7d32;">🟢 1st Trimester (Start of School Year): August to November</span>
+      <table class="trimester-table trimester1">
+        <tr>
+          <th>Week</th>
+          <th>Schedule</th>
+        </tr>
+        <tr><td>Week 1</td><td>Student Orientation &amp; Class Start</td></tr>
+        <tr><td>Week 2–5</td><td>Regular Classes</td></tr>
+        <tr><td>Week 6</td><td>Midterm Exams / Ministry Checkpoint</td></tr>
+        <tr><td>Week 7–11</td><td>Regular Classes + Chapel (1st Friday)</td></tr>
+        <tr><td>Week 12</td><td>Final Class Meetings &amp; Review</td></tr>
+        <tr><td>Week 13</td><td><strong>Final Exams</strong></td></tr>
+        <tr><td>Post-Term</td><td>Break / Grade Review / Mentoring</td></tr>
+      </table>
+
+      <span class="schedule-label" style="color:#bfa600;">🟡 2nd Trimester (Midyear Term): January to March</span>
+      <table class="trimester-table trimester2">
+        <tr>
+          <th>Week</th>
+          <th>Schedule</th>
+        </tr>
+        <tr><td>Week 1</td><td>Enrollment Confirmation &amp; Start of Class</td></tr>
+        <tr><td>Week 2–5</td><td>Regular Classes</td></tr>
+        <tr><td>Week 6</td><td>Midterm Exams / Ministry Reports</td></tr>
+        <tr><td>Week 7–11</td><td>Regular Classes + Chapel (1st Friday)</td></tr>
+        <tr><td>Week 12</td><td>Final Class Meetings</td></tr>
+        <tr><td>Week 13</td><td><strong>Final Exams</strong></td></tr>
+        <tr><td>Post-Term</td><td>Break / Planning for Internship / VBS</td></tr>
+      </table>
+
+      <span class="schedule-label" style="color:#7c4d9b;">🟣 3rd Trimester (Final Trimester): April to June</span>
+      <table class="trimester-table trimester3">
+        <tr>
+          <th>Week</th>
+          <th>Schedule</th>
+        </tr>
+        <tr><td>Week 1</td><td>Class Resume &amp; Internship Reports</td></tr>
+        <tr><td>Week 2–5</td><td>Regular Classes</td></tr>
+        <tr><td>Week 6</td><td>Midterm Exams</td></tr>
+        <tr><td>Week 7–11</td><td>Regular Classes + Chapel (1st Friday)</td></tr>
+        <tr><td>Week 12</td><td>Course Wrap-Up</td></tr>
+        <tr><td>Week 13</td><td><strong>Final Exams</strong> / <strong>Graduation Rehearsal</strong></td></tr>
+        <tr><td>Post-Term</td><td><strong>Graduation / Internship Assignment</strong></td></tr>
+      </table>
+
+      <div class="schedule-notes">
+        <strong>Year-Round Notes:</strong>
+        <ul>
+          <li><strong>Chapel:</strong> Every <strong>1st Friday of the month</strong> (8:00–9:00 AM)</li>
+          <li><strong>Weekend Ministry:</strong> Every <strong>Saturday or Sunday</strong> (1 unit)</li>
+          <li><strong>Trimester Load:</strong> 3 subjects (3 units each) + Weekend Ministry (1 unit) = 10 units per term</li>
+          <li><strong>Break Weeks:</strong> November–January, March–April, June–August</li>
+        </ul>
+      </div>
+    </section>
+    <!-- End Trimester Schedule Section -->
+
     <section id="faculty">
       <h2>🧑‍🏫 Faculty</h2>
       <p>Our instructors are seasoned CAMACOP pastors and educators with <strong>Master's and Doctorate degrees</strong>, trained in both academic excellence and practical ministry.</p>
