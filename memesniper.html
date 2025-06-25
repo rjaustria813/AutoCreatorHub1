@@ -1,0 +1,218 @@
+const { useState, useEffect } = React;
+
+// Helper to calculate Moon Score (mock logic based on available data)
+function calculateMoonScore(token) {
+  let score = 0;
+  if (token.market_cap_rank && token.market_cap_rank <= 100) score += 30;
+  if (token.price_change_percentage_24h && token.price_change_percentage_24h > 0) score += 20;
+  if (token.total_volume && token.total_volume > 1000000) score += 20;
+  if (token.circulating_supply && token.circulating_supply > 1000000) score += 20;
+  score += 10; // base score
+  return Math.min(score, 100);
+}
+
+// Mock meme coins with contract and where to buy info
+const mockMemeCoins = [
+  {
+    id: 'moondoge',
+    name: 'MoonDoge',
+    symbol: 'moondoge',
+    chain: 'BSC',
+    contract: '0x1234567890abcdef1234567890abcdef12345678',
+    buyLink: 'https://pancakeswap.finance/swap?outputCurrency=0x1234567890abcdef1234567890abcdef12345678',
+    image: 'https://cryptologos.cc/logos/dogecoin-doge-logo.png?v=025',
+    hype: 85
+  },
+  {
+    id: 'shibainu',
+    name: 'Shiba Inu',
+    symbol: 'shiba',
+    chain: 'ETH',
+    contract: '0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE',
+    buyLink: 'https://app.uniswap.org/#/swap?outputCurrency=0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE',
+    image: 'https://cryptologos.cc/logos/shiba-inu-shib-logo.png?v=025',
+    hype: 90
+  },
+  {
+    id: 'dogecoin',
+    name: 'Dogecoin',
+    symbol: 'doge',
+    chain: 'ETH',
+    contract: '0x0000000000000000000000000000000000000000',
+    buyLink: 'https://app.uniswap.org/#/swap?outputCurrency=0x0000000000000000000000000000000000000000',
+    image: 'https://cryptologos.cc/logos/dogecoin-doge-logo.png?v=025',
+    hype: 95
+  }
+];
+
+function App() {
+  const [tokens, setTokens] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [search, setSearch] = useState('');
+  const [sortBy, setSortBy] = useState('market_cap_rank');
+  const [sortAsc, setSortAsc] = useState(true);
+  const [selectedToken, setSelectedToken] = useState(null);
+  const [selectedMeme, setSelectedMeme] = useState(null);
+
+  useEffect(() => {
+    async function fetchTokens() {
+      setLoading(true);
+      setError(null);
+      try {
+        const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false');
+        const data = await res.json();
+        setTokens(data);
+      } catch (e) {
+        setError('Failed to fetch token data');
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchTokens();
+  }, []);
+
+  const filteredTokens = tokens.filter(token =>
+    token.name.toLowerCase().includes(search.toLowerCase()) ||
+    token.symbol.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const sortedTokens = [...filteredTokens].sort((a, b) => {
+    let valA = a[sortBy];
+    let valB = b[sortBy];
+    if (valA === null) valA = Infinity;
+    if (valB === null) valB = Infinity;
+    if (typeof valA === 'string') valA = valA.toLowerCase();
+    if (typeof valB === 'string') valB = valB.toLowerCase();
+    if (valA < valB) return sortAsc ? -1 : 1;
+    if (valA > valB) return sortAsc ? 1 : -1;
+    return 0;
+  });
+
+  function toggleSort(field) {
+    if (sortBy === field) {
+      setSortAsc(!sortAsc);
+    } else {
+      setSortBy(field);
+      setSortAsc(true);
+    }
+  }
+
+  return (
+    <div style={{ fontFamily: 'Arial, sans-serif', maxWidth: 1200, margin: 'auto', padding: 20, background: '#0d1117', color: '#c9d1d9' }}>
+      <header style={{ marginBottom: 20, textAlign: 'center' }}>
+        <h1 style={{ color: '#58a6ff' }}>Crypto Scanner App</h1>
+        <p>Discover new crypto projects with live data from CoinGecko</p>
+      </header>
+
+      <section style={{ marginBottom: 20 }}>
+        <input
+          type="text"
+          placeholder="Search tokens by name or symbol..."
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          style={{ width: '100%', padding: 10, fontSize: 16, borderRadius: 5, border: '1px solid #30363d', background: '#161b22', color: '#c9d1d9' }}
+        />
+      </section>
+
+      {loading && <p>Loading tokens...</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+
+      {!loading && !error && (
+        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+          <thead>
+            <tr style={{ borderBottom: '1px solid #30363d' }}>
+              <th style={headerCellStyle} onClick={() => toggleSort('market_cap_rank')}>#</th>
+              <th style={headerCellStyle} onClick={() => toggleSort('name')}>Name</th>
+              <th style={headerCellStyle} onClick={() => toggleSort('current_price')}>Price</th>
+              <th style={headerCellStyle} onClick={() => toggleSort('market_cap')}>Market Cap</th>
+              <th style={headerCellStyle} onClick={() => toggleSort('total_volume')}>Volume (24h)</th>
+              <th style={headerCellStyle} onClick={() => toggleSort('price_change_percentage_24h')}>24h %</th>
+              <th style={headerCellStyle}>Moon Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sortedTokens.map(token => (
+              <tr key={token.id} style={{ cursor: 'pointer', borderBottom: '1px solid #222' }} onClick={() => setSelectedToken(token)}>
+                <td style={cellStyle}>{token.market_cap_rank}</td>
+                <td style={{ ...cellStyle, display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <img src={token.image} alt={token.name} width={24} height={24} style={{ borderRadius: '50%' }} />
+                  {token.name} ({token.symbol.toUpperCase()})
+                </td>
+                <td style={cellStyle}>${token.current_price.toLocaleString()}</td>
+                <td style={cellStyle}>${token.market_cap.toLocaleString()}</td>
+                <td style={cellStyle}>${token.total_volume.toLocaleString()}</td>
+                <td style={{ ...cellStyle, color: token.price_change_percentage_24h >= 0 ? '#4caf50' : '#f44336' }}>
+                  {token.price_change_percentage_24h?.toFixed(2)}%
+                </td>
+                <td style={cellStyle}>{calculateMoonScore(token)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+
+      {selectedToken && (
+        <section style={{ marginTop: 30, padding: 20, background: '#161b22', borderRadius: 8 }}>
+          <button onClick={() => setSelectedToken(null)} style={{ float: 'right', cursor: 'pointer', background: 'transparent', border: 'none', color: '#c9d1d9', fontSize: 20 }}>&times;</button>
+          <h2>{selectedToken.name} ({selectedToken.symbol.toUpperCase()})</h2>
+          <img src={selectedToken.image} alt={selectedToken.name} width={48} height={48} style={{ borderRadius: '50%' }} />
+          <p>Current Price: ${selectedToken.current_price.toLocaleString()}</p>
+          <p>Market Cap: ${selectedToken.market_cap.toLocaleString()}</p>
+          <p>24h Volume: ${selectedToken.total_volume.toLocaleString()}</p>
+          <p>24h Change: <span style={{ color: selectedToken.price_change_percentage_24h >= 0 ? '#4caf50' : '#f44336' }}>{selectedToken.price_change_percentage_24h?.toFixed(2)}%</span></p>
+          <p>Moon Score: {calculateMoonScore(selectedToken)}</p>
+          <p><a href={`https://www.coingecko.com/en/coins/${selectedToken.id}`} target="_blank" rel="noopener noreferrer" style={{ color: '#58a6ff' }}>View on CoinGecko</a></p>
+        </section>
+      )}
+
+      {/* Meme Coin Explorer Section */}
+      <section style={{ marginTop: 40 }}>
+        <h2 style={{ color: '#58a6ff' }}>Meme Coin Explorer</h2>
+        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+          <thead>
+            <tr style={{ borderBottom: '1px solid #30363d' }}>
+              <th style={headerCellStyle}>Name</th>
+              <th style={headerCellStyle}>Chain</th>
+              <th style={headerCellStyle}>Hype</th>
+              <th style={headerCellStyle}>Where to Buy</th>
+            </tr>
+          </thead>
+          <tbody>
+            {mockMemeCoins.map(meme => (
+              <tr key={meme.id} style={{ borderBottom: '1px solid #222' }}>
+                <td style={cellStyle}>
+                  <img src={meme.image} alt={meme.name} width={24} height={24} style={{ borderRadius: '50%', marginRight: 8, verticalAlign: 'middle' }} />
+                  {meme.name} ({meme.symbol.toUpperCase()})
+                </td>
+                <td style={cellStyle}>{meme.chain}</td>
+                <td style={cellStyle}>{meme.hype}%</td>
+                <td style={cellStyle}>
+                  <a href={meme.buyLink} target="_blank" rel="noopener noreferrer" style={{ color: '#58a6ff' }}>
+                    Buy Now
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+    </div>
+  );
+}
+
+const headerCellStyle = {
+  padding: '10px 8px',
+  cursor: 'pointer',
+  userSelect: 'none',
+  textAlign: 'left',
+  borderBottom: '1px solid #30363d',
+  color: '#58a6ff'
+};
+
+const cellStyle = {
+  padding: '10px 8px',
+  borderBottom: '1px solid #222'
+};
+
+ReactDOM.render(<App />, document.getElementById('root'));
