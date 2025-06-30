@@ -1,584 +1,923 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9524791500754717"
-     crossorigin="anonymous"></script>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Forex Calculator Pro with Categories</title>
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
-    padding: 20px;
-  }
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .header {
-    text-align: center;
-    color: white;
-    margin-bottom: 30px;
-  }
-  .header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-  }
-  .header p {
-    font-size: 1.1rem;
-    opacity: 0.9;
-  }
-  .calculator-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 20px;
-    margin-bottom: 30px;
-  }
-  .calculator-card {
-    background: white;
-    border-radius: 15px;
-    padding: 25px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-  }
-  .calculator-card:hover {
-    transform: translateY(-5px);
-  }
-  .card-title {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 20px;
-    text-align: center;
-    border-bottom: 2px solid #667eea;
-    padding-bottom: 10px;
-  }
-  .form-group {
-    margin-bottom: 15px;
-  }
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 600;
-    color: #555;
-  }
-  .form-group input, .form-group select {
-    width: 100%;
-    padding: 12px;
-    border: 2px solid #e1e5e9;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
-  }
-  .form-group input:focus, .form-group select:focus {
-    outline: none;
-    border-color: #667eea;
-  }
-  .calculate-btn {
-    width: 100%;
-    padding: 15px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  .calculate-btn:hover {
-    transform: translateY(-2px);
-  }
-  .results {
-    margin-top: 20px;
-    padding: 15px;
-    background: #f8f9fa;
-    border-radius: 8px;
-    border-left: 4px solid #667eea;
-  }
-  .result-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
-    padding: 5px 0;
-  }
-  .result-label {
-    font-weight: 600;
-    color: #555;
-  }
-  .result-value {
-    font-weight: 700;
-    color: #333;
-  }
-  .currency-pairs {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-    margin-top: 30px;
-  }
-  .pair-card {
-    background: white;
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  }
-  .pair-name {
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: #333;
-    margin-bottom: 5px;
-  }
-  .pair-price {
-    font-size: 1.2rem;
-    color: #667eea;
-    font-weight: 600;
-  }
-  .risk-warning {
-    background: #fff3cd;
-    border: 1px solid #ffeaa7;
-    border-radius: 8px;
-    padding: 15px;
-    margin-top: 20px;
-    color: #856404;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forex Calculator Pro - AutoCreatorHub</title>
+    <meta name="description" content="Professional forex trading calculators for position sizing, pip values, margin calculation, and risk management. Free tools for forex traders.">
+    <meta name="keywords" content="forex calculator, position size calculator, pip calculator, margin calculator, forex trading tools">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .calculator-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .calculator-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .calculate-btn:active {
+            transform: translateY(0);
+        }
+
+        .results {
+            margin-top: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-label {
+            font-weight: 600;
+            color: #555;
+        }
+
+        .result-value {
+            font-weight: 700;
+            color: #333;
+        }
+
+        .currency-pairs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .pair-card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .pair-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .pair-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .pair-price {
+            font-size: 1.2rem;
+            color: #667eea;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .risk-warning {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+            color: #856404;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            color: #dc3545;
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .success {
+            color: #155724;
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 0 10px;
+            }
+
+            body {
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .calculator-card {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-  <div class="header">
-    <h1>🔢 Forex Calculator Pro with Categories</h1>
-    <p>Professional trading calculators for position sizing, pip values, and risk management</p>
-  </div>
-  <div class="calculator-grid">
-    <!-- Position Size Calculator -->
-    <div class="calculator-card">
-      <h2 class="card-title">📊 Position Size Calculator</h2>
-      <form id="positionForm">
-        <div class="form-group">
-          <label for="positionCategory">Instrument Category:</label>
-          <select id="positionCategory" required>
-            <option value="forex">Forex Pairs (USD-based)</option>
-            <option value="indices">Indices (USD-denominated)</option>
-            <option value="metals">Metals (USD-based)</option>
-            <option value="stocks">Stocks (USD-based)</option>
-          </select>
+    <div class="container">
+        <a href="https://www.autocreatorhub.io" class="back-link">← Back to AutoCreatorHub</a>
+        
+        <div class="header">
+            <h1>🔢 Forex Calculator Pro</h1>
+            <p>Professional trading calculators for position sizing, pip values, and risk management</p>
         </div>
-        <div class="form-group">
-          <label for="positionInstrument">Select Instrument:</label>
-          <select id="positionInstrument" required></select>
+
+        <div class="calculator-grid">
+            <!-- Position Size Calculator -->
+            <div class="calculator-card">
+                <h2 class="card-title">📊 Position Size Calculator</h2>
+                <form id="positionForm">
+                    <div class="form-group">
+                        <label for="currencyPair">Currency Pair:</label>
+                        <select id="currencyPair" required>
+                            <option value="EURUSD">EUR/USD</option>
+                            <option value="GBPUSD">GBP/USD</option>
+                            <option value="USDJPY">USD/JPY</option>
+                            <option value="USDCHF">USD/CHF</option>
+                            <option value="AUDUSD">AUD/USD</option>
+                            <option value="USDCAD">USD/CAD</option>
+                            <option value="NZDUSD">NZD/USD</option>
+                            <option value="EURJPY">EUR/JPY</option>
+                            <option value="GBPJPY">GBP/JPY</option>
+                            <option value="EURGBP">EUR/GBP</option>
+                            <option value="AUDCAD">AUD/CAD</option>
+                            <option value="AUDCHF">AUD/CHF</option>
+                            <option value="AUDNZD">AUD/NZD</option>
+                            <option value="CADCHF">CAD/CHF</option>
+                            <option value="CADJPY">CAD/JPY</option>
+                            <option value="CHFJPY">CHF/JPY</option>
+                            <option value="EURCHF">EUR/CHF</option>
+                            <option value="EURCAD">EUR/CAD</option>
+                            <option value="EURAUD">EUR/AUD</option>
+                            <option value="EURNZD">EUR/NZD</option>
+                            <option value="GBPCHF">GBP/CHF</option>
+                            <option value="GBPCAD">GBP/CAD</option>
+                            <option value="GBPAUD">GBP/AUD</option>
+                            <option value="GBPNZD">GBP/NZD</option>
+                            <option value="NZDCAD">NZD/CAD</option>
+                            <option value="NZDCHF">NZD/CHF</option>
+                            <option value="NZDJPY">NZD/JPY</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="accountCurrency">Account Currency:</label>
+                        <select id="accountCurrency" required>
+                            <option value="USD">USD - US Dollar</option>
+                            <option value="EUR">EUR - Euro</option>
+                            <option value="GBP">GBP - British Pound</option>
+                            <option value="JPY">JPY - Japanese Yen</option>
+                            <option value="CHF">CHF - Swiss Franc</option>
+                            <option value="AUD">AUD - Australian Dollar</option>
+                            <option value="CAD">CAD - Canadian Dollar</option>
+                            <option value="NZD">NZD - New Zealand Dollar</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="accountSize">Account Size:</label>
+                        <input type="number" id="accountSize" placeholder="e.g., 10000" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="riskRatio">Risk Ratio (%):</label>
+                        <input type="number" id="riskRatio" placeholder="e.g., 2" step="0.1" min="0.1" max="100" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="stopLoss">Stop Loss (pips):</label>
+                        <input type="number" id="stopLoss" placeholder="e.g., 50" min="1" required>
+                    </div>
+                    <button type="submit" class="calculate-btn">Calculate Position Size</button>
+                </form>
+                <div id="positionResults" class="results" style="display: none;"></div>
+            </div>
+
+            <!-- Pip Calculator -->
+            <div class="calculator-card">
+                <h2 class="card-title">📈 Pip Calculator</h2>
+                <form id="pipForm">
+                    <div class="form-group">
+                        <label for="pipCurrencyPair">Currency Pair:</label>
+                        <select id="pipCurrencyPair" required>
+                            <option value="EURUSD">EUR/USD</option>
+                            <option value="GBPUSD">GBP/USD</option>
+                            <option value="USDJPY">USD/JPY</option>
+                            <option value="USDCHF">USD/CHF</option>
+                            <option value="AUDUSD">AUD/USD</option>
+                            <option value="USDCAD">USD/CAD</option>
+                            <option value="NZDUSD">NZD/USD</option>
+                            <option value="EURJPY">EUR/JPY</option>
+                            <option value="GBPJPY">GBP/JPY</option>
+                            <option value="EURGBP">EUR/GBP</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="pipAccountCurrency">Account Currency:</label>
+                        <select id="pipAccountCurrency" required>
+                            <option value="USD">USD - US Dollar</option>
+                            <option value="EUR">EUR - Euro</option>
+                            <option value="GBP">GBP - British Pound</option>
+                            <option value="JPY">JPY - Japanese Yen</option>
+                            <option value="CHF">CHF - Swiss Franc</option>
+                            <option value="AUD">AUD - Australian Dollar</option>
+                            <option value="CAD">CAD - Canadian Dollar</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tradeSize">Trade Size (Lots):</label>
+                        <input type="number" id="tradeSize" placeholder="e.g., 1" step="0.01" min="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pipCount">Number of Pips:</label>
+                        <input type="number" id="pipCount" placeholder="e.g., 10" min="1" required>
+                    </div>
+                    <button type="submit" class="calculate-btn">Calculate Pip Value</button>
+                </form>
+                <div id="pipResults" class="results" style="display: none;"></div>
+            </div>
+
+            <!-- Margin Calculator -->
+            <div class="calculator-card">
+                <h2 class="card-title">💰 Margin Calculator</h2>
+                <form id="marginForm">
+                    <div class="form-group">
+                        <label for="marginCurrencyPair">Currency Pair:</label>
+                        <select id="marginCurrencyPair" required>
+                            <option value="EURUSD">EUR/USD</option>
+                            <option value="GBPUSD">GBP/USD</option>
+                            <option value="USDJPY">USD/JPY</option>
+                            <option value="USDCHF">USD/CHF</option>
+                            <option value="AUDUSD">AUD/USD</option>
+                            <option value="USDCAD">USD/CAD</option>
+                            <option value="EURJPY">EUR/JPY</option>
+                            <option value="GBPJPY">GBP/JPY</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="marginTradeSize">Trade Size (Lots):</label>
+                        <input type="number" id="marginTradeSize" placeholder="e.g., 1" step="0.01" min="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="leverage">Leverage:</label>
+                        <select id="leverage" required>
+                            <option value="30">1:30</option>
+                            <option value="50">1:50</option>
+                            <option value="100">1:100</option>
+                            <option value="200">1:200</option>
+                            <option value="400">1:400</option>
+                            <option value="500">1:500</option>
+                            <option value="1000">1:1000</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="currentPrice">Current Price:</label>
+                        <input type="number" id="currentPrice" placeholder="e.g., 1.1000" step="0.00001" min="0.00001" required>
+                    </div>
+                    <button type="submit" class="calculate-btn">Calculate Margin</button>
+                </form>
+                <div id="marginResults" class="results" style="display: none;"></div>
+            </div>
+
+            <!-- Profit/Loss Calculator -->
+            <div class="calculator-card">
+                <h2 class="card-title">📊 Profit/Loss Calculator</h2>
+                <form id="profitForm">
+                    <div class="form-group">
+                        <label for="plCurrencyPair">Currency Pair:</label>
+                        <select id="plCurrencyPair" required>
+                            <option value="EURUSD">EUR/USD</option>
+                            <option value="GBPUSD">GBP/USD</option>
+                            <option value="USDJPY">USD/JPY</option>
+                            <option value="USDCHF">USD/CHF</option>
+                            <option value="AUDUSD">AUD/USD</option>
+                            <option value="USDCAD">USD/CAD</option>
+                            <option value="EURJPY">EUR/JPY</option>
+                            <option value="GBPJPY">GBP/JPY</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="plTradeSize">Trade Size (Lots):</label>
+                        <input type="number" id="plTradeSize" placeholder="e.g., 1" step="0.01" min="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="openPrice">Open Price:</label>
+                        <input type="number" id="openPrice" placeholder="e.g., 1.1000" step="0.00001" min="0.00001" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="closePrice">Close Price:</label>
+                        <input type="number" id="closePrice" placeholder="e.g., 1.1050" step="0.00001" min="0.00001" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tradeType">Trade Type:</label>
+                        <select id="tradeType" required>
+                            <option value="buy">Buy (Long)</option>
+                            <option value="sell">Sell (Short)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="calculate-btn">Calculate P&L</button>
+                </form>
+                <div id="profitResults" class="results" style="display: none;"></div>
+            </div>
         </div>
-        <div class="form-group">
-          <label for="accountCurrency">Account Currency:</label>
-          <select id="accountCurrency" required>
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
-            <option value="GBP">GBP</option>
-            <option value="JPY">JPY</option>
-            <option value="CHF">CHF</option>
-            <option value="AUD">AUD</option>
-            <option value="CAD">CAD</option>
-          </select>
+
+        <!-- Live Currency Rates -->
+        <div class="calculator-card">
+            <h2 class="card-title">💱 Major Currency Pairs - Live Rates</h2>
+            <div class="currency-pairs" id="currencyPairs">
+                <div class="pair-card">
+                    <div class="pair-name">EUR/USD</div>
+                    <div class="pair-price">1.0850</div>
+                </div>
+                <div class="pair-card">
+                    <div class="pair-name">GBP/USD</div>
+                    <div class="pair-price">1.2650</div>
+                </div>
+                <div class="pair-card">
+                    <div class="pair-name">USD/JPY</div>
+                    <div class="pair-price">148.50</div>
+                </div>
+                <div class="pair-card">
+                    <div class="pair-name">USD/CHF</div>
+                    <div class="pair-price">0.8850</div>
+                </div>
+                <div class="pair-card">
+                    <div class="pair-name">AUD/USD</div>
+                    <div class="pair-price">0.6750</div>
+                </div>
+                <div class="pair-card">
+                    <div class="pair-name">USD/CAD</div>
+                    <div class="pair-price">1.3550</div>
+                </div>
+                <div class="pair-card">
+                    <div class="pair-name">NZD/USD</div>
+                    <div class="pair-price">0.6200</div>
+                </div>
+                <div class="pair-card">
+                    <div class="pair-name">EUR/JPY</div>
+                    <div class="pair-price">161.08</div>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-          <label for="accountSize">Account Size:</label>
-          <input type="number" id="accountSize" placeholder="10000" required />
+
+        <div class="risk-warning">
+            <strong>⚠️ Risk Warning:</strong> Trading foreign exchange on margin carries a high level of risk and may not be suitable for all investors. Past performance is not indicative of future results. The high degree of leverage can work against you as well as for you. Before deciding to trade foreign exchange, you should carefully consider your investment objectives, level of experience, and risk appetite.
         </div>
-        <div class="form-group">
-          <label for="riskRatio">Risk Ratio (%):</label>
-          <input type="number" id="riskRatio" placeholder="2" step="0.1" required />
-        </div>
-        <div class="form-group">
-          <label for="stopLoss">Stop Loss (pips):</label>
-          <input type="number" id="stopLoss" placeholder="50" required />
-        </div>
-        <button type="submit" class="calculate-btn">Calculate Position Size</button>
-      </form>
-      <div id="positionResults" class="results" style="display:none"></div>
     </div>
 
-    <!-- Pip Calculator -->
-    <div class="calculator-card">
-      <h2 class="card-title">📈 Pip Calculator</h2>
-      <form id="pipForm">
-        <div class="form-group">
-          <label for="pipCategory">Instrument Category:</label>
-          <select id="pipCategory" required>
-            <option value="forex">Forex Pairs (USD-based)</option>
-            <option value="indices">Indices (USD-denominated)</option>
-            <option value="metals">Metals (USD-based)</option>
-            <option value="stocks">Stocks (USD-based)</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="pipInstrument">Select Instrument:</label>
-          <select id="pipInstrument" required></select>
-        </div>
-        <div class="form-group">
-          <label for="pipAccountCurrency">Account Currency:</label>
-          <select id="pipAccountCurrency" required>
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
-            <option value="GBP">GBP</option>
-            <option value="JPY">JPY</option>
-            <option value="CHF">CHF</option>
-            <option value="AUD">AUD</option>
-            <option value="CAD">CAD</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="tradeSize">Trade Size (Lots):</label>
-          <input type="number" id="tradeSize" placeholder="1" step="0.01" required />
-        </div>
-        <div class="form-group">
-          <label for="pipCount">Number of Pips:</label>
-          <input type="number" id="pipCount" placeholder="10" required />
-        </div>
-        <button type="submit" class="calculate-btn">Calculate Pip Value</button>
-      </form>
-      <div id="pipResults" class="results" style="display:none"></div>
-    </div>
+    <script>
+        // Exchange rates (in a real app, these would come from an API)
+        const exchangeRates = {
+            'EURUSD': 1.0850,
+            'GBPUSD': 1.2650,
+            'USDJPY': 148.50,
+            'USDCHF': 0.8850,
+            'AUDUSD': 0.6750,
+            'USDCAD': 1.3550,
+            'NZDUSD': 0.6200,
+            'EURJPY': 161.08,
+            'GBPJPY': 187.85,
+            'EURGBP': 0.8580,
+            'AUDCAD': 0.9250,
+            'AUDCHF': 0.5975,
+            'AUDNZD': 1.0890,
+            'CADCHF': 0.6460,
+            'CADJPY': 108.25,
+            'CHFJPY': 167.85,
+            'EURCHF': 0.9605,
+            'EURCAD': 1.4695,
+            'EURAUD': 1.6085,
+            'EURNZD': 1.7505,
+            'GBPCHF': 1.1185,
+            'GBPCAD': 1.7125,
+            'GBPAUD': 1.8745,
+            'GBPNZD': 2.0405,
+            'NZDCAD': 0.8405,
+            'NZDCHF': 0.5485,
+            'NZDJPY': 92.05
+        };
 
-    <!-- Margin Calculator -->
-    <div class="calculator-card">
-      <h2 class="card-title">💰 Margin Calculator</h2>
-      <form id="marginForm">
-        <div class="form-group">
-          <label for="marginCategory">Instrument Category:</label>
-          <select id="marginCategory" required>
-            <option value="forex">Forex Pairs (USD-based)</option>
-            <option value="indices">Indices (USD-denominated)</option>
-            <option value="metals">Metals (USD-based)</option>
-            <option value="stocks">Stocks (USD-based)</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="marginInstrument">Select Instrument:</label>
-          <select id="marginInstrument" required></select>
-        </div>
-        <div class="form-group">
-          <label for="marginTradeSize">Trade Size (Lots):</label>
-          <input type="number" id="marginTradeSize" placeholder="1" step="0.01" required />
-        </div>
-        <div class="form-group">
-          <label for="leverage">Leverage:</label>
-          <select id="leverage" required>
-            <option value="50">1:50</option>
-            <option value="100">1:100</option>
-            <option value="200">1:200</option>
-            <option value="500">1:500</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="currentPrice">Current Price:</label>
-          <input type="number" id="currentPrice" placeholder="1.1000" step="0.00001" required />
-        </div>
-        <button type="submit" class="calculate-btn">Calculate Margin</button>
-      </form>
-      <div id="marginResults" class="results" style="display:none"></div>
-    </div>
+        // Utility functions
+        function formatCurrency(amount, currency = 'USD') {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: currency,
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(amount);
+        }
 
-    <!-- Profit/Loss Calculator -->
-    <div class="calculator-card">
-      <h2 class="card-title">📊 Profit/Loss Calculator</h2>
-      <form id="profitForm">
-        <div class="form-group">
-          <label for="profitCategory">Instrument Category:</label>
-          <select id="profitCategory" required>
-            <option value="forex">Forex Pairs (USD-based)</option>
-            <option value="indices">Indices (USD-denominated)</option>
-            <option value="metals">Metals (USD-based)</option>
-            <option value="stocks">Stocks (USD-based)</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="profitInstrument">Select Instrument:</label>
-          <select id="profitInstrument" required></select>
-        </div>
-        <div class="form-group">
-          <label for="plTradeSize">Trade Size (Lots):</label>
-          <input type="number" id="plTradeSize" placeholder="1" step="0.01" required />
-        </div>
-        <div class="form-group">
-          <label for="openPrice">Open Price:</label>
-          <input type="number" id="openPrice" placeholder="1.1000" step="0.00001" required />
-        </div>
-        <div class="form-group">
-          <label for="closePrice">Close Price:</label>
-          <input type="number" id="closePrice" placeholder="1.1050" step="0.00001" required />
-        </div>
-        <div class="form-group">
-          <label for="tradeType">Trade Type:</label>
-          <select id="tradeType" required>
-            <option value="buy">Buy (Long)</option>
-            <option value="sell">Sell (Short)</option>
-          </select>
-        </div>
-        <button type="submit" class="calculate-btn">Calculate P&L</button>
-      </form>
-      <div id="profitResults" class="results" style="display:none"></div>
-    </div>
-  </div>
-  <div class="calculator-card">
-    <h2 class="card-title">💱 Major Currency Pairs</h2>
-    <div class="currency-pairs" id="currencyPairs">
-      <div class="pair-card"><div class="pair-name">EUR/USD</div><div class="pair-price">1.0850</div></div>
-      <div class="pair-card"><div class="pair-name">GBP/USD</div><div class="pair-price">1.2650</div></div>
-      <div class="pair-card"><div class="pair-name">USD/JPY</div><div class="pair-price">148.50</div></div>
-      <div class="pair-card"><div class="pair-name">USD/CHF</div><div class="pair-price">0.8850</div></div>
-      <div class="pair-card"><div class="pair-name">AUD/USD</div><div class="pair-price">0.6750</div></div>
-      <div class="pair-card"><div class="pair-name">USD/CAD</div><div class="pair-price">1.3550</div></div>
-    </div>
-  </div>
-  <div class="risk-warning">
-    <strong>⚠️ Risk Warning:</strong> Trading foreign exchange on margin carries a high level of risk and may not be suitable for all investors. Past performance is not indicative of future results. The high degree of leverage can work against you as well as for you.
-  </div>
-</div>
-<script>
-  const instruments = {
-    forex: [
-      { value: 'EURUSD', text: 'EUR/USD (Euro / US Dollar)' },
-      { value: 'GBPUSD', text: 'GBP/USD (British Pound / US Dollar)' },
-      { value: 'USDJPY', text: 'USD/JPY (US Dollar / Japanese Yen)' },
-      { value: 'USDCHF', text: 'USD/CHF (US Dollar / Swiss Franc)' },
-      { value: 'AUDUSD', text: 'AUD/USD (Australian Dollar / US Dollar)' },
-      { value: 'NZDUSD', text: 'NZD/USD (New Zealand Dollar / US Dollar)' },
-      { value: 'USDCAD', text: 'USD/CAD (US Dollar / Canadian Dollar)' },
-      { value: 'USDSGD', text: 'USD/SGD (US Dollar / Singapore Dollar)' },
-      { value: 'USDHKD', text: 'USD/HKD (US Dollar / Hong Kong Dollar)' },
-      { value: 'USDSEK', text: 'USD/SEK (US Dollar / Swedish Krona)' },
-      { value: 'USDNOK', text: 'USD/NOK (US Dollar / Norwegian Krone)' },
-      { value: 'USDZAR', text: 'USD/ZAR (US Dollar / South African Rand)' },
-      { value: 'USDTRY', text: 'USD/TRY (US Dollar / Turkish Lira)' },
-      { value: 'USDMXN', text: 'USD/MXN (US Dollar / Mexican Peso)' },
-      { value: 'USDTHB', text: 'USD/THB (US Dollar / Thai Baht)' },
-      { value: 'USDCNH', text: 'USD/CNH (US Dollar / Chinese Yuan offshore)' }
-    ],
-    indices: [
-      { value: 'US30', text: 'US30 / DJ30 – Dow Jones Industrial Average' },
-      { value: 'NAS100', text: 'NAS100 / NDX – Nasdaq 100' },
-      { value: 'SPX500', text: 'SPX500 / US500 – S&P 500' },
-      { value: 'GER40', text: 'GER40 / DAX40 – Germany 40 Index' },
-      { value: 'UK100', text: 'UK100 / FTSE100 – United Kingdom' },
-      { value: 'JPN225', text: 'JPN225 / Nikkei 225 – Japan' },
-      { value: 'HK50', text: 'HK50 – Hang Seng Index (Hong Kong)' },
-      { value: 'AUS200', text: 'AUS200 – S&P/ASX 200 (Australia)' },
-      { value: 'FRA40', text: 'FRA40 – CAC 40 (France)' }
-    ],
-    metals: [
-      { value: 'XAUUSD', text: 'XAU/USD – Gold vs US Dollar' },
-      { value: 'XAGUSD', text: 'XAG/USD – Silver vs US Dollar' },
-      { value: 'XPTUSD', text: 'XPT/USD – Platinum vs US Dollar' },
-      { value: 'XPDUSD', text: 'XPD/USD – Palladium vs US Dollar' },
-      { value: 'HGUSD', text: 'Copper (HG/USD)' },
-      { value: 'ALIUSD', text: 'Aluminum (ALI/USD)' }
-    ],
-    stocks: [
-      { value: 'AAPL', text: 'AAPL – Apple Inc.' },
-      { value: 'MSFT', text: 'MSFT – Microsoft Corp.' },
-      { value: 'TSLA', text: 'TSLA – Tesla Inc.' },
-      { value: 'AMZN', text: 'AMZN – Amazon.com Inc.' },
-      { value: 'NVDA', text: 'NVDA – Nvidia Corp.' },
-      { value: 'META', text: 'META – Meta Platforms Inc.' },
-      { value: 'GOOGL', text: 'GOOGL – Alphabet Inc.' },
-      { value: 'JPM', text: 'JPM – JPMorgan Chase' },
-      { value: 'XOM', text: 'XOM – ExxonMobil' },
-      { value: 'BRK.B', text: 'BRK.B – Berkshire Hathaway' },
-      { value: 'WMT', text: 'WMT – Walmart' },
-      { value: 'BA', text: 'BA – Boeing' },
-      { value: 'PFE', text: 'PFE – Pfizer' },
-      { value: 'SPY', text: 'SPY – S&P 500 ETF' },
-      { value: 'QQQ', text: 'QQQ – Nasdaq 100 ETF' },
-      { value: 'GLD', text: 'GLD – Gold ETF' },
-      { value: 'TLT', text: 'TLT – Treasury Bond ETF' },
-      { value: 'USO', text: 'USO – Crude Oil ETF' }
-    ]
-  };
+        function formatNumber(number, decimals = 2) {
+            return new Intl.NumberFormat('en-US', {
+                minimumFractionDigits: decimals,
+                maximumFractionDigits: decimals
+            }).format(number);
+        }
 
-  function populateDropdown(categorySelectId, instrumentSelectId) {
-    const categorySelect = document.getElementById(categorySelectId);
-    const instrumentSelect = document.getElementById(instrumentSelectId);
-    const category = categorySelect.value;
-    instrumentSelect.innerHTML = '';
-    instruments[category].forEach(inst => {
-      const option = document.createElement('option');
-      option.value = inst.value;
-      option.textContent = inst.text;
-      instrumentSelect.appendChild(option);
-    });
-  }
+        function getPipValue(currencyPair) {
+            return currencyPair.includes('JPY') ? 0.01 : 0.0001;
+        }
 
-  // Initialize all dropdowns
-  ['position', 'pip', 'margin', 'profit'].forEach(prefix => {
-    populateDropdown(prefix + 'Category', prefix + 'Instrument');
-    document.getElementById(prefix + 'Category').addEventListener('change', () => {
-      populateDropdown(prefix + 'Category', prefix + 'Instrument');
-    });
-  });
+        function showResults(elementId, content) {
+            const resultsDiv = document.getElementById(elementId);
+            resultsDiv.innerHTML = content;
+            resultsDiv.style.display = 'block';
+        }
 
-  // Utility functions
-  function getPipValue(instrument) {
-    // For simplicity, JPY pairs and metals have pip value 0.01, others 0.0001
-    if (instrument.includes('JPY') || instrument.startsWith('XAU') || instrument.startsWith('XAG') || instrument.startsWith('XPT') || instrument.startsWith('XPD') || instrument === 'HGUSD' || instrument === 'ALIUSD') {
-      return 0.01;
-    }
-    return 0.0001;
-  }
+        function showError(elementId, message) {
+            showResults(elementId, `<div class="error">❌ ${message}</div>`);
+        }
 
-  function formatCurrency(amount, currency = 'USD') {
-    return new Intl.NumberFormat('en-US', { style: 'currency', currency: currency }).format(amount);
-  }
+        function showSuccess(elementId, message) {
+            showResults(elementId, `<div class="success">✅ ${message}</div>`);
+        }
 
-  function formatNumber(number, decimals = 2) {
-    return number.toFixed(decimals);
-  }
+        // Position Size Calculator
+        document.getElementById('positionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            try {
+                const currencyPair = document.getElementById('currencyPair').value;
+                const accountCurrency = document.getElementById('accountCurrency').value;
+                const accountSize = parseFloat(document.getElementById('accountSize').value);
+                const riskRatio = parseFloat(document.getElementById('riskRatio').value);
+                const stopLoss = parseFloat(document.getElementById('stopLoss').value);
+                
+                // Validation
+                if (accountSize <= 0 || riskRatio <= 0 || stopLoss <= 0) {
+                    showError('positionResults', 'Please enter valid positive numbers for all fields.');
+                    return;
+                }
 
-  // Position Size Calculator
-  document.getElementById('positionForm').addEventListener('submit', e => {
-    e.preventDefault();
-    const instrument = document.getElementById('positionInstrument').value;
-    const accountCurrency = document.getElementById('accountCurrency').value;
-    const accountSize = parseFloat(document.getElementById('accountSize').value);
-    const riskRatio = parseFloat(document.getElementById('riskRatio').value);
-    const stopLoss = parseFloat(document.getElementById('stopLoss').value);
+                if (riskRatio > 10) {
+                    showError('positionResults', 'Risk ratio above 10% is extremely dangerous. Please consider a lower risk percentage.');
+                    return;
+                }
+                
+                // Calculate risk amount
+                const riskAmount = (accountSize * riskRatio) / 100;
+                
+                // Get pip value
+                const pipValue = getPipValue(currencyPair);
+                
+                // Calculate position size
+                const positionSize = riskAmount / (stopLoss * pipValue * 100000);
+                const positionSizeLots = positionSize.toFixed(2);
+                const units = Math.round(positionSize * 100000);
+                const riskPerPip = riskAmount / stopLoss;
+                
+                // Display results
+                const content = `
+                    <div class="result-item">
+                        <span class="result-label">💰 Risk Amount:</span>
+                        <span class="result-value">${formatCurrency(riskAmount, accountCurrency)}</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">📊 Position Size:</span>
+                        <span class="result-value">${positionSizeLots} lots</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">🔢 Units:</span>
+                        <span class="result-value">${formatNumber(units, 0)}</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">📈 Risk per Pip:</span>
+                        <span class="result-value">${formatCurrency(riskPerPip, accountCurrency)}</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">⚠️ Max Loss:</span>
+                        <span class="result-value">${formatCurrency(riskAmount, accountCurrency)} (${riskRatio}%)</span>
+                    </div>
+                `;
+                showResults('positionResults', content);
+                
+            } catch (error) {
+                showError('positionResults', 'An error occurred during calculation. Please check your inputs.');
+            }
+        });
 
-    if (accountSize <= 0 || riskRatio <= 0 || stopLoss <= 0) {
-      alert('Please enter valid positive numbers.');
-      return;
-    }
+        // Pip Calculator
+        document.getElementById('pipForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            try {
+                const currencyPair = document.getElementById('pipCurrencyPair').value;
+                const accountCurrency = document.getElementById('pipAccountCurrency').value;
+                const tradeSize = parseFloat(document.getElementById('tradeSize').value);
+                const pipCount = parseFloat(document.getElementById('pipCount').value);
+                
+                // Validation
+                if (tradeSize <= 0 || pipCount <= 0) {
+                    showError('pipResults', 'Please enter valid positive numbers for all fields.');
+                    return;
+                }
+                
+                // Calculate pip value
+                const pipValue = getPipValue(currencyPair);
+                const pipValuePerLot = pipValue * 100000;
+                const totalPipValue = tradeSize * pipCount * pipValuePerLot;
+                const pipValueSingle = tradeSize * pipValuePerLot;
+                
+                const content = `
+                    <div class="result-item">
+                        <span class="result-label">💎 Pip Value:</span>
+                        <span class="result-value">${formatCurrency(pipValueSingle)} per pip</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">📊 Total Value:</span>
+                        <span class="result-value">${formatCurrency(totalPipValue)}</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">📈 Pips:</span>
+                        <span class="result-value">${formatNumber(pipCount, 1)} pips</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">📋 Trade Size:</span>
+                        <span class="result-value">${formatNumber(tradeSize, 2)} lots</span>
+                    </div>
+                `;
+                showResults('pipResults', content);
+                
+            } catch (error) {
+                showError('pipResults', 'An error occurred during calculation. Please check your inputs.');
+            }
+        });
 
-    const riskAmount = (accountSize * riskRatio) / 100;
-    const pipValue = getPipValue(instrument);
-    const positionSize = riskAmount / (stopLoss * pipValue * 100000);
-    const positionSizeLots = positionSize.toFixed(2);
-    const units = Math.round(positionSize * 100000);
-    const riskPerPip = riskAmount / stopLoss;
+        // Margin Calculator
+        document.getElementById('marginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            try {
+                const currencyPair = document.getElementById('marginCurrencyPair').value;
+                const tradeSize = parseFloat(document.getElementById('marginTradeSize').value);
+                const leverage = parseFloat(document.getElementById('leverage').value);
+                const currentPrice = parseFloat(document.getElementById('currentPrice').value);
+                
+                // Validation
+                if (tradeSize <= 0 || leverage <= 0 || currentPrice <= 0) {
+                    showError('marginResults', 'Please enter valid positive numbers for all fields.');
+                    return;
+                }
+                
+                const notionalValue = tradeSize * 100000 * currentPrice;
+                const marginRequired = notionalValue / leverage;
+                const marginPercentage = (1 / leverage) * 100;
+                
+                const content = `
+                    <div class="result-item">
+                        <span class="result-label">💰 Notional Value:</span>
+                        <span class="result-value">${formatCurrency(notionalValue)}</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">🏦 Margin Required:</span>
+                        <span class="result-value">${formatCurrency(marginRequired)}</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">⚡ Leverage:</span>
+                        <span class="result-value">1:${leverage}</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">📊 Margin %:</span>
+                        <span class="result-value">${formatNumber(marginPercentage, 2)}%</span>
+                    </div>
+                `;
+                showResults('marginResults', content);
+                
+            } catch (error) {
+                showError('marginResults', 'An error occurred during calculation. Please check your inputs.');
+            }
+        });
 
-    const resultsDiv = document.getElementById('positionResults');
-    resultsDiv.style.display = 'block';
-    resultsDiv.innerHTML = `
-      <div class="result-item"><span class="result-label">Risk Amount:</span><span class="result-value">${formatCurrency(riskAmount, accountCurrency)}</span></div>
-      <div class="result-item"><span class="result-label">Position Size:</span><span class="result-value">${positionSizeLots} lots</span></div>
-      <div class="result-item"><span class="result-label">Units:</span><span class="result-value">${units.toLocaleString()}</span></div>
-      <div class="result-item"><span class="result-label">Risk per Pip:</span><span class="result-value">${formatCurrency(riskPerPip, accountCurrency)}</span></div>
-    `;
-  });
+        // Profit/Loss Calculator
+        document.getElementById('profitForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            try {
+                const currencyPair = document.getElementById('plCurrencyPair').value;
+                const tradeSize = parseFloat(document.getElementById('plTradeSize').value);
+                const openPrice = parseFloat(document.getElementById('openPrice').value);
+                const closePrice = parseFloat(document.getElementById('closePrice').value);
+                const tradeType = document.getElementById('tradeType').value;
+                
+                // Validation
+                if (tradeSize <= 0 || openPrice <= 0 || closePrice <= 0) {
+                    showError('profitResults', 'Please enter valid positive numbers for all fields.');
+                    return;
+                }
+                
+                let priceDifference = closePrice - openPrice;
+                if (tradeType === 'sell') {
+                    priceDifference = openPrice - closePrice;
+                }
+                
+                let pipDifference = priceDifference;
+                if (currencyPair.includes('JPY')) {
+                    pipDifference = priceDifference * 100;
+                } else {
+                    pipDifference = priceDifference * 10000;
+                }
+                
+                const profitLoss = tradeSize * priceDifference * 100000;
+                const profitLossFormatted = profitLoss >= 0 ? `+${formatCurrency(Math.abs(profitLoss))}` : `-${formatCurrency(Math.abs(profitLoss))}`;
+                const pipDifferenceFormatted = pipDifference >= 0 ? `+${formatNumber(Math.abs(pipDifference), 1)}` : `-${formatNumber(Math.abs(pipDifference), 1)}`;
+                
+                const content = `
+                    <div class="result-item">
+                        <span class="result-label">💹 Price Difference:</span>
+                        <span class="result-value">${formatNumber(priceDifference, 5)}</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">📊 Pip Difference:</span>
+                        <span class="result-value">${pipDifferenceFormatted} pips</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">💰 Profit/Loss:</span>
+                        <span class="result-value" style="color: ${profitLoss >= 0 ? '#28a745' : '#dc3545'}; font-weight: bold;">${profitLossFormatted}</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">📈 Trade Type:</span>
+                        <span class="result-value">${tradeType === 'buy' ? 'Buy (Long)' : 'Sell (Short)'}</span>
+                    </div>
+                `;
+                showResults('profitResults', content);
+                
+            } catch (error) {
+                showError('profitResults', 'An error occurred during calculation. Please check your inputs.');
+            }
+        });
 
-  // Pip Calculator
-  document.getElementById('pipForm').addEventListener('submit', e => {
-    e.preventDefault();
-    const instrument = document.getElementById('pipInstrument').value;
-    const accountCurrency = document.getElementById('pipAccountCurrency').value;
-    const tradeSize = parseFloat(document.getElementById('tradeSize').value);
-    const pipCount = parseFloat(document.getElementById('pipCount').value);
+        // Update currency rates simulation
+        function updateRates() {
+            const pairs = document.querySelectorAll('.pair-card');
+            pairs.forEach(pair => {
+                const pairName = pair.querySelector('.pair-name').textContent.replace('/', '');
+                const priceElement = pair.querySelector('.pair-price');
+                const currentPrice = parseFloat(priceElement.textContent);
+                
+                // Simulate realistic price movement (±0.05% random change)
+                const change = (Math.random() - 0.5) * 0.001;
+                const newPrice = currentPrice * (1 + change);
+                
+                // Format price based on currency pair
+                const decimals = pairName.includes('JPY') ? 2 : 4;
+                priceElement.textContent = newPrice.toFixed(decimals);
+                
+                // Add color indication for price movement
+                if (change > 0) {
+                    priceElement.style.color = '#28a745';
+                    pair.style.borderLeft = '4px solid #28a745';
+                } else {
+                    priceElement.style.color = '#dc3545';
+                    pair.style.borderLeft = '4px solid #dc3545';
+                }
+                
+                // Reset color after 3 seconds
+                setTimeout(() => {
+                    priceElement.style.color = '#667eea';
+                    pair.style.borderLeft = 'none';
+                }, 3000);
+            });
+        }
 
-    if (tradeSize <= 0 || pipCount <= 0) {
-      alert('Please enter valid positive numbers.');
-      return;
-    }
+        // Update rates every 15 seconds for more realistic simulation
+        setInterval(updateRates, 15000);
 
-    const pipValue = getPipValue(instrument);
-    const pipValuePerLot = pipValue * 100000;
-    const totalPipValue = tradeSize * pipCount * pipValuePerLot;
-    const pipValueSingle = tradeSize * pipValuePerLot;
+        // Initialize with a small delay
+        setTimeout(updateRates, 2000);
 
-    const resultsDiv = document.getElementById('pipResults');
-    resultsDiv.style.display = 'block';
-    resultsDiv.innerHTML = `
-      <div class="result-item"><span class="result-label">Pip Value:</span><span class="result-value">${formatCurrency(pipValueSingle)}</span></div>
-      <div class="result-item"><span class="result-label">Total Value:</span><span class="result-value">${formatCurrency(totalPipValue)}</span></div>
-      <div class="result-item"><span class="result-label">Pips:</span><span class="result-value">${pipCount}</span></div>
-    `;
-  });
+        // Add loading states for better UX
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                const button = form.querySelector('.calculate-btn');
+                const originalText = button.textContent;
+                button.innerHTML = '<span class="loading"></span> Calculating...';
+                button.disabled = true;
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.disabled = false;
+                }, 500);
+            });
+        });
 
-  // Margin Calculator
-  document.getElementById('marginForm').addEventListener('submit', e => {
-    e.preventDefault();
-    const instrument = document.getElementById('marginInstrument').value;
-    const tradeSize = parseFloat(document.getElementById('marginTradeSize').value);
-    const leverage = parseFloat(document.getElementById('leverage').value);
-    const currentPrice = parseFloat(document.getElementById('currentPrice').value);
+        // Add smooth scrolling to results
+        function scrollToResults(elementId) {
+            setTimeout(() => {
+                const element = document.getElementById(elementId);
+                if (element && element.style.display !== 'none') {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+            }, 600);
+        }
 
-    if (tradeSize <= 0 || leverage <= 0 || currentPrice <= 0) {
-      alert('Please enter valid positive numbers.');
-      return;
-    }
+        // Enhanced form submissions with scroll
+        ['positionForm', 'pipForm', 'marginForm', 'profitForm'].forEach(formId => {
+            document.getElementById(formId).addEventListener('submit', function() {
+                const resultsId = formId.replace('Form', 'Results');
+                scrollToResults(resultsId);
+            });
+        });
 
-    const notionalValue = tradeSize * 100000 * currentPrice;
-    const marginRequired = notionalValue / leverage;
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'Enter') {
+                const activeElement = document.activeElement;
+                const form = activeElement.closest('form');
+                if (form) {
+                    form.dispatchEvent(new Event('submit'));
+                }
+            }
+        });
 
-    const resultsDiv = document.getElementById('marginResults');
-    resultsDiv.style.display = 'block';
-    resultsDiv.innerHTML = `
-      <div class="result-item"><span class="result-label">Notional Value:</span><span class="result-value">${formatCurrency(notionalValue)}</span></div>
-      <div class="result-item"><span class="result-label">Margin Required:</span><span class="result-value">${formatCurrency(marginRequired)}</span></div>
-      <div class="result-item"><span class="result-label">Leverage:</span><span class="result-value">1:${leverage}</span></div>
-    `;
-  });
+        // Add tooltips for better UX
+        const tooltips = {
+            'accountSize': 'Enter your total account balance in your account currency',
+            'riskRatio': 'Recommended: 1-2% per trade. Never risk more than you can afford to lose',
+            'stopLoss': 'Distance in pips from entry price where you will exit if trade goes against you',
+            'leverage': 'Higher leverage = higher risk. Use with caution',
+            'tradeSize': '1 lot = 100,000 units of base currency'
+        };
 
-  // Profit/Loss Calculator
-  document.getElementById('profitForm').addEventListener('submit', e => {
-    e.preventDefault();
-    const instrument = document.getElementById('profitInstrument').value;
-    const tradeSize = parseFloat(document.getElementById('plTradeSize').value);
-    const openPrice = parseFloat(document.getElementById('openPrice').value);
-    const closePrice = parseFloat(document.getElementById('closePrice').value);
-    const tradeType = document.getElementById('tradeType').value;
+        Object.keys(tooltips).forEach(id => {
+            const element = document.getElementById(id);
+            if (element) {
+                element.title = tooltips[id];
+            }
+        });
 
-    if (tradeSize <= 0 || openPrice <= 0 || closePrice <= 0) {
-      alert('Please enter valid positive numbers.');
-      return;
-    }
-
-    let priceDifference = closePrice - openPrice;
-    if (tradeType === 'sell') {
-      priceDifference = openPrice - closePrice;
-    }
-
-    let pipDifference = priceDifference;
-    if (instrument.includes('JPY')) {
-      pipDifference = priceDifference * 100;
-    } else {
-      pipDifference = priceDifference * 10000;
-    }
-
-    const profitLoss = tradeSize * priceDifference * 100000;
-    const profitLossFormatted = profitLoss >= 0 ? `+${formatCurrency(Math.abs(profitLoss))}` : `-${formatCurrency(Math.abs(profitLoss))}`;
-    const pipDifferenceFormatted = pipDifference >= 0 ? `+${pipDifference.toFixed(1)}` : `-${pipDifference.toFixed(1)}`;
-
-    const resultsDiv = document.getElementById('profitResults');
-    resultsDiv.style.display = 'block';
-    resultsDiv.innerHTML = `
-      <div class="result-item"><span class="result-label">Price Difference:</span><span class="result-value">${priceDifference.toFixed(5)}</span></div>
-      <div class="result-item"><span class="result-label">Pip Difference:</span><span class="result-value">${pipDifferenceFormatted} pips</span></div>
-      <div class="result-item"><span class="result-label">Profit/Loss:</span><span class="result-value" style="color: ${profitLoss >= 0 ? 'green' : 'red'}">${profitLossFormatted}</span></div>
-    `;
-  });
-
-  // Live currency pairs display (static for demo)
-  const livePairs = [
-    { name: 'EUR/USD', price: 1.0850 },
-    { name: 'GBP/USD', price: 1.2650 },
-    { name: 'USD/JPY', price: 148.50 },
-    { name: 'USD/CHF', price: 0.8850 },
-    { name: 'AUD/USD', price: 0.6750 },
-    { name: 'USD/CAD', price: 1.3550 }
-  ];
-
-  const currencyPairsDiv = document.getElementById('currencyPairs');
-  currencyPairsDiv.innerHTML = '';
-  livePairs.forEach(pair => {
-    const div = document.createElement('div');
-    div.className = 'pair-card';
-    div.innerHTML = `<div class='pair-name'>${pair.name}</div><div class='pair-price'>${pair.price}</div>`;
-    currencyPairsDiv.appendChild(div);
-  });
-</script>
+        console.log('🚀 Forex Calculator Pro loaded successfully!');
+        console.log('💡 Tip: Use Ctrl+Enter to quickly submit forms');
+    </script>
 </body>
 </html>
