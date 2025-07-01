@@ -6,7 +6,7 @@ api_key = os.getenv('OPENAI_API_KEY')
 
 # Your Google Ads code
 GOOGLE_ADS = '''
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4187415981956711"
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9524791500754717"
      crossorigin="anonymous"></script>
 '''
 
