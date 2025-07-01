@@ -2,7 +2,7 @@ name: Generate AI Blog Posts
 
 on:
   schedule:
-    - cron: '0 8 * * *'   # Runs daily at 8:00 AM UTC
+    - cron: '*/30 * * * *'   # Runs every 30 minutes
   workflow_dispatch:
 
 jobs:
@@ -23,16 +23,16 @@ jobs:
         python -m pip install --upgrade pip
         pip install openai
 
-    - name: Generate blog post
+    - name: Generate 1 blog post
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
         python generate_ai_blog.py
 
-    - name: Commit and push changes
+    - name: Commit and push generated post
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add blog/ai-post-single.html
+        git add blog/
         git commit -m "Auto-generated blog post $(date)" || exit 0
         git push
