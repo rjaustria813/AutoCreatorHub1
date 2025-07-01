@@ -137,6 +137,7 @@ def main():
         title = f"{topic} - Part {i}"
         print(f"Generating blog post {i}: {title}")
         content = generate_blog(topic)
+        # Fix: replace newlines outside f-string to avoid syntax error
         content_html = "<p>" + content.replace('\n', '</p><p>') + "</p>"
         html = make_html(title, content_html)
         filename = f"blog/ai-post-{i}.html"
